@@ -1,0 +1,13 @@
+str="""hello python
+python is object oriented
+python is easier to use
+welcome to kleit"""
+
+print("count of characters: ",len(str))
+words=[]
+l=0
+lin=str.split('\n')
+print("count of lines :",len(lin))
+words=str.split()
+print(words)
+print("count of words are : ",len(words))
