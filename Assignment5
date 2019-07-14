@@ -1,0 +1,25 @@
+import pandas as pd
+
+University=pd.DataFrame({
+    "Name":['praful','Ekalavya','Sneha','Vaibhavi','Misha','Devoleena','Deepti','Ila','Farhan','Nisha'],
+    "USN":['2KE16CS005','2KE16IS009','2KE16EC009','2KE16CS098','2KE16CS009','2KE16ME010','2KE16EE090','2KE16CS078','2KE16CS009','2KE16CV010'],
+    "Sem":[3,5,6,7,8,9,1,2,5,7],
+    "Branch":['cse','ise','ece','cse','cse','me','eee','cse','cse','ce'],
+    "Score":[25,35,45,55,65,75,85,95,100,57],
+    "Region":['belgaum','bangalore','mysore','belgaum','mysore','belgaum','mysore','bangalore','belgaum','bangalore']
+})
+
+
+print(University)
+print("students mean scores",University['Score'].mean())
+print("student who scored maximum marks\n ",University[University['Score']==University['Score'].max()])
+print("Students above 60 \n",University[University['Score']>60])
+
+
+print(University.describe())
+print("Student name of maximum score\n",University[University["Score"]==University['Score'].max()])
+print("Student of region Belgaum\n",University[University["Region"]=="belgaum"])
+print("students studying in 3 sem are \n ",University[University['Sem']==3])
+print("After capitalizing the names of students \n",University['Name'].str.capitalize())
+
+print(University.rename(index={0:'a',1:'b',2:'c',3:'d',4:'e',5:'f',6:'g',7:'h',8:'i',9:'j'}))
