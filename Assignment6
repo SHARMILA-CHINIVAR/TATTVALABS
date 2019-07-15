@@ -1,0 +1,15 @@
+import pandas as pd
+import re
+
+bok=pd.DataFrame({
+ "Name":['ds','c','java','.net','dbms','m1','m2','m3','m4','atc'],
+ "Authname":['Padma reddy','Padma reddy','Herbert','Robert','Raghuram','DrKSC','DrKSC','DrKSC','DrKSC','Anami']
+})
+print("BOOK AND ITS AUTHOR\n")
+print(bok)
+
+a=input("enter the end letters of authors to display book name:")
+print(bok[bok['Authname'].str.endswith(a)])
+
+b=input("enter the start letters of authors to display book name:")
+print(bok[bok['Authname'].str.startswith(b)])
