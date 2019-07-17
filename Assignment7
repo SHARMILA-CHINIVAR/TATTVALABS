@@ -1,0 +1,33 @@
+from flask import Flask , render_template        
+
+app=Flask(__name__)
+
+@app.route('/')
+def inn():
+    return render_template('ex.html')
+
+@app.route('/page2')
+def index2():
+    return "Python Programming"
+
+if __name__=="__main__":
+    app.run()
+    
+    #ex.html file
+    '''
+    
+    <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>page1</title>
+</head>
+<body>
+<h3>hello world  </h3>
+
+<form method="get" action="/page2">
+    <button type="submit">Page2</button>
+</form>
+
+</body>
+</html>
+'''
