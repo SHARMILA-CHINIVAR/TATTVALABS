@@ -1,0 +1,34 @@
+import pandas as pd
+import re
+
+bok=pd.DataFrame({
+ "Name":['ds','c','java','.net','dbms','m1','m2','m3','m4','atc'],
+ "Authname":['Padmareddy','Padmareddy','Herbert','Robert','Raghuram','DrKSC','DrKSC','DrKSC','DrKSC','Anami'],
+    "Age":[55,55,70,65,60,62,62,62,62,58]
+})
+print("BOOK AND ITS AUTHOR\n")
+print(bok)
+
+a=input("enter the end letters of authors to display book name:")
+print(bok[bok['Authname'].str.endswith(a)])
+
+b=input("enter the start letters of authors to display book name:")
+print(bok[bok['Authname'].str.startswith(b)])
+
+c=int(input("enter the age:"))
+cnt=0
+
+'''for i in bok["Age"]:
+    if int(i)==c:
+        cnt+=1
+
+
+
+print("No of authors matching with given age ",c,"is:",cnt)'''
+
+a1=bok.groupby("Age")
+print(a1.get_group(c))
+
+x=int(input("enter from index"))
+y=int(input("enter to index"))
+print(bok[x:y])
