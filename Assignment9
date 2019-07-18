@@ -40,4 +40,28 @@ def div():
 
 if __name__ == "__main__":
     app.run()
+    
+    #ass17-1.html
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>page2</title>
+</head>
+<body>
+
+<form name="addition" action="/add"  method="post">
+    Value1:<input type="text" name="v1" id="v1"><br>
+    Value2:<input type="text" name="v2" id="v2"><br>
+   <button type="submit">ADD</button><br>
+    <button type="submit" onclick="javascript:form.action='/sub';">SUB</button><br>
+
+    <button type="submit" onclick="javascript:form.action='/mul';">MUL</button><br>
+
+    <button type="submit" onclick="javascript:form.action='/div';">DIV</button><br>
+</form>
+
+
+</body>
+</html>
 
