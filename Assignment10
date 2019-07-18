@@ -1,0 +1,118 @@
+from flask import Flask, render_template, request
+import pandas as pd
+def sum(a,b):
+    return (a+b)
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def first():
+    return render_template('assht17-2a.html')
+
+
+@app.route('/home')
+def home():
+    return render_template('assht17-2b.html')
+
+@app.route('/abt')
+def abt():
+    return render_template('assht17-2c.html')
+
+@app.route('/cont')
+def contact():
+    return render_template('assht17-2d.html')
+
+@app.route('/feed')
+def feed():
+    return render_template('assht17-2e.html')
+
+if __name__ == "__main__":
+    app.run()
+
+
+#assht17-2a.html
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="/static/style17-1.css">
+<head>
+    <meta charset="UTF-8">
+    <title>first</title>
+</head>
+<body>
+  <a href="/home"><button>HOME</button></a>
+  <a href="/abt"><button>ABOUT US</button></a>
+  <a href="/cont"><button>CONTACT US</button></a>
+  <a href="/feed"><button>FEEDBACK</button></a>
+
+</body>
+</html>
+
+#assht17-2b.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGudomttx-ULL5LcF1lx6ED8DnuoqdwrFi2xCVtU2YijMGGA_uMw" alt="Yatri Trip" width="500" height="300"><br>
+<h2>Travel is the movement of people between distant geographical locations.<br>
+ Travel can be done by foot, bicycle, automobile, train, boat, bus, airplane, ship or other means, with or without luggage, and can be one way or round trip.<br>
+    Travel can also include relatively short stays between successive movements</h2>
+</body>
+</html>
+
+#assht17-2c.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>abt</title>
+</head>
+<body>
+<h2>About Us</h2>
+     <h3> Yatri.com is an Indian online Travel Company founded in 20015.<br>
+     HeadQuatered in Delhi,India, the company provides online travel services including flight tickets, domestic and
+         international holiday packages, hotel reservations, rail and bus tickets.<br>
+         As of 31 march 2018, they ahve 14 company-owned travel stores in 14 cities and counters in four major airports in India.<br>
+
+
+     </h3>
+
+</body>
+</html>
+
+#assht17-2d.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cont</title>
+</head>
+<body>
+ <h2>Contact details</h2>
+Mob no-9865743218 <br>
+phone-(080)-263857 <br>
+email id-abc@gmail.com <br>
+</body>
+</html>
+
+#assht17-2e.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>feed</title>
+</head>
+<body>
+ <h2>FEEDBACK</h2>
+<form name="myform" action="/home" method="get">
+    NAME:<input type="text" name="name" id="name">
+    FEEDBACK:<input type="text" name="feed" id="feed">
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
+
