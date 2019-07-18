@@ -1,0 +1,43 @@
+from flask import Flask, render_template, request
+import pandas as pd
+def sum(a,b):
+    return (a+b)
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def index2():
+    return render_template('assht17-1.html')
+
+
+@app.route('/add', methods=['GET','POST'])
+def add():
+     v1=request.form.get('v1',type=int)
+     v2=request.form.get('v2',type=int)
+
+     return "the sum of two values : "+str(v1+v2)
+
+@app.route('/sub', methods=['GET','POST'])
+def sub():
+     v1=request.form.get('v1',type=int)
+     v2=request.form.get('v2',type=int)
+
+     return "the difference of two values : "+str(v1-v2)
+
+@app.route('/mul', methods=['GET','POST'])
+def mul():
+     v1=request.form.get('v1',type=int)
+     v2=request.form.get('v2',type=int)
+     return "the multiplication of two values : "+str(v1*v2)
+
+@app.route('/div', methods=['GET','POST'])
+def div():
+     v1=request.form.get('v1',type=int)
+     v2=request.form.get('v2',type=int)
+
+     return "the division of two values : "+str(v1/v2)
+
+if __name__ == "__main__":
+    app.run()
+
