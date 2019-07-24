@@ -1,0 +1,26 @@
+
+import sqlite3
+conn=sqlite3.connect('F:\TATTVALABS/assignment23.sqlite')
+cursor=conn.cursor()
+print("Successful")
+
+import pandas as pd
+d=pd.read_csv('F:\TATTVALABS/iris.csv')
+d.to_sql('irisdata',conn,if_exists='append',index=False)
+
+for row in cursor.execute("SELECT sepal_length,sepal_width,petal_length,petal_width,species from irisdata where species=='setosa' " ):
+    print('SEP_LEN',row[0])
+    print('SEP_WID',row[1])
+    print('PET_LEN',row[2])
+    print('PET_WID',row[3])        
+    print('SPECIES',row[4])
+    
+    
+cursor.execute("update irisdata set sepal_width=4.5 where sepal_length=5.1 and species='setosa'")
+conn.commit()
+
+cursor.execute("delete from irisdata where sepal_length=5.0 and species='setosa'")
+conn.commit()
+
+cursor.execute("delete from irisdata where species='virginica'")
+conn.commit()
