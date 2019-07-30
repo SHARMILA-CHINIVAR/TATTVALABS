@@ -1,0 +1,24 @@
+import matplotlib
+from matplotlib import pyplot as pl,style
+from mpl_toolkits.mplot3d import Axes3D
+import csv
+import pandas as pd
+
+
+fig=pl.figure()
+ax=fig.add_subplot(111,projection='3d')
+df=pd.read_csv(r'F:\TATTVALABS\heart.csv')
+n=len(df)
+for i in range(0,n):
+    if( int(df.iloc[i]['target']==0)):
+        ax.scatter(df.iloc[i]['trestbps'],df.iloc[i]['age'],color='r')
+    if ( int(df.iloc[i]['target']==1)):
+        ax.scatter(df.iloc[i]['trestbps'], df.iloc[i]['age'], color='b')
+
+
+
+
+ax.set_xlabel('trestbps')
+ax.set_ylabel('Age')
+#pl.savefig('F:\\TATTVALABS\\heart2.png')
+pl.show()
