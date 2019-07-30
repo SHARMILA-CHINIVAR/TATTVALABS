@@ -1,0 +1,89 @@
+from flask import Flask, render_template,request
+
+app = Flask(__name__)
+n='''A FRIEND IN NEED IS 
+  A FRIEND INDEED'''
+d=len(n)
+c=d-(n.count(' ') + n.count('\n'))
+print(c)
+a = n.split()
+words=len(a)
+b = n.split('\n')
+lines=len(b)
+print(lines,words,c)
+
+@app.route('/')
+def index():
+    return render_template('index1.html')
+
+@app.route('/submit',methods=['GET','POST'])
+def index1():
+    v1 = request.form.get('val1',type=int)
+    v2 = request.form.get('val2',type=int)
+    v3=  request.form.get('val3',type=int)
+    print(v1,v2,v3)
+
+    if v1==lines and v2==words and v3==c:
+        return "<h1>SUCCESS</h1>"
+    else:
+        return "<h1>FAIL</h1>"
+
+if __name__=="__main__":
+    app.run()
+    
+    
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+</head>
+<body style="background-color:pink;">
+<!--
+<p><h1>{{ n }}</h1></p>-->
+<h1>A FRIEND IN NEED IS A <br>
+   FRIEND INDEED</h1>
+<form name="myform"   method="post" >
+            <div style="position:absolute;top:45%;left:10%; color:black;">
+No of Lines:<p><input type="number" name="val1" id="val1" style="font-size:18pt;height=35px;width=200px;"></p>
+No of Words:<p><input type="number" name="val2" id="val2" style="font-size:18pt;height=35px;width=200px;"></p>
+No of Characters:<p><input type="number"name="val3" id="val3" style="font-size:18pt;height=35px;width=200px;"></p></div>
+          <div style="position:absolute; bottom:30%;right:45%; font-size:800pt;">
+        <input type="submit" formaction="/submit" name="submit" id="submit" value="SUBMIT">
+            </div>
+
+<div id="timer" style="position:absolute; top:5%;right:40%; font-size:80pt; color:blue;"></div>
+
+<script type="text/javascript">
+
+var timeoutHandle;
+function countdown(minutes,seconds){
+ function tick(){
+  var counter=document.getElementById("timer");
+
+  counter.innerHTML=minutes.toString()+":" + (seconds<10 ? "0" : "")+ String(seconds);
+  seconds--;
+  if(seconds>=0) {
+  timeoutHandle=setTimeout(tick,1000);
+  }else {
+   if(minutes>=1) {
+   setTimeout(function() {
+   countdown(minutes-1,59);
+   }, 1000);
+   }
+  }
+ }
+ tick();
+ }
+ countdown(1,30);
+var auto_refresh=setInterval(function(){
+submitform();
+},90000);
+
+function submitform() {
+document.getElementById("submit").click();
+}
+</script>
+            </form>
+</body>
+</html>
