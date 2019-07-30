@@ -1,0 +1,22 @@
+import matplotlib.pyplot as p
+import numpy as np
+import matplotlib.animation as animation
+
+fig, ax = p.subplots()
+
+x = np.arange(0, 2 * np.pi, 0.01)
+lin, = ax.plot(x, np.sin(x))
+l1, =ax.plot(x,np.cos(x))
+
+def ani(i):
+    lin.set_ydata(np.sin(x + i / 10.0))
+    l1.set_ydata(np.cos(x+i/10.0))
+    return lin,l1,
+
+def init():
+    lin.set_ydata(np.ma.array(x, mask=True))
+    return lin,l1,
+
+
+a = animation.FuncAnimation(fig, ani, np.arange(1, 200), init_func=init, interval=25, blit=True)
+p.show()
